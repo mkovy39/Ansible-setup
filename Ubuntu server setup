@@ -1,0 +1,10 @@
+set hostname : hostnamectl set-hotname <hostname>
+root previlege: usermod -aG sudo <username>
+Applications can register their profiles with UFW upon installation. 
+These profiles allow UFW to manage these applications by name. OpenSSH, 
+the service that allows you to connect to your server, has a profile registered with UFW.
+You can examine the list of installed UFW profiles by typing: ufw app list
+ufw allow OpenSSH
+ufw allow OpenSSH
+ufw status
+
