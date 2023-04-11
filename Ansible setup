@@ -1,0 +1,17 @@
+SSH key:
+Master-
+create a key pair on the client machine
+ssh-keygen
+ssh-copy-id node1@192.168.22.133
+ssh-copy-id node2@192.168.22.134
+
+Installing ansible:
+from master-
+sudo apt-add-repository ppa:ansible/ansible
+sudo apt update
+sudo apt upgrade
+sudo apt install ansible
+
+Inventory file setup:
+sudo nano /etc/ansible/hosts
+
