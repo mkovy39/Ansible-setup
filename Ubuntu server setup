@@ -1,10 +1,36 @@
-set hostname : hostnamectl set-hotname <hostname>
-root previlege: usermod -aG sudo <username>
-Applications can register their profiles with UFW upon installation. 
-These profiles allow UFW to manage these applications by name. OpenSSH, 
-the service that allows you to connect to your server, has a profile registered with UFW.
-You can examine the list of installed UFW profiles by typing: ufw app list
+Open a terminal window by pressing CTRL + ALT + T.
+To set the hostname, use the following command:
+
+hostnamectl set-hostname <hostname>
+Replace <hostname> with the name you want to set as your hostname. For example, to set the hostname to "mycomputer," you would use the following command:
+
+
+hostnamectl set-hostname mycomputer
+After running the command, the hostname will be updated immediately.
+Adding a User to the Sudo Group
+By default, the root user has administrative privileges on Ubuntu. However, it's generally not recommended to log in as the root user because it can be a security risk. Instead, it's best to add a non-root user to the sudo group. This will allow the user to run commands with administrative privileges when needed.
+
+To add a user to the sudo group, use the following command:
+usermod -aG sudo <username>
+Replace <username> with the name of the user you want to add to the sudo group. For example, to add a user named "johndoe" to the sudo group, you would use the following command:
+
+
+usermod -aG sudo johndoe
+After running the command, the user will be able to run commands with administrative privileges by using sudo.
+
+Configuring UFW
+UFW (Uncomplicated Firewall) is a front-end for iptables that provides an easy-to-use interface for managing firewall rules on Ubuntu. UFW is disabled by default on Ubuntu, but it can be enabled and configured to allow or block incoming and outgoing traffic.
+
+Applications can register their profiles with UFW upon installation. These profiles allow UFW to manage these applications by name. OpenSSH, the service that allows you to connect to your server, has a profile registered with UFW. You can examine the list of installed UFW profiles by typing the following command in the terminal:
+
+ufw app list
+To allow incoming SSH traffic, use the following command:
+
 ufw allow OpenSSH
-ufw allow OpenSSH
+This will allow incoming SSH traffic from any IP address.
+
+To check the status of UFW, use the following command:
+
 ufw status
+This will show you the current status of UFW and the rules that are currently in effect.
 
