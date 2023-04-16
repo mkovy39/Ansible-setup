@@ -1,17 +1,37 @@
-SSH key:
-Master-
-create a key pair on the client machine
-ssh-keygen
-ssh-copy-id node1@192.168.22.133
-ssh-copy-id node2@192.168.22.134
+Installing Ansible
+To install Ansible on Ubuntu, you can follow these steps:
 
-Installing ansible:
-from master-
+Add the Ansible repository to your system's package sources list by running the following command:
+
 sudo apt-add-repository ppa:ansible/ansible
+Update your package sources and upgrade your system's packages by running the following commands:
+
 sudo apt update
 sudo apt upgrade
-sudo apt install ansible
+Install Ansible by running the following command:
 
-Inventory file setup:
+sudo apt install ansible
+Setting up the Inventory File
+The inventory file is a configuration file that contains a list of hosts and groups that Ansible manages. Follow these steps to set up the inventory file:
+
+Open the inventory file in a text editor. In this example, we'll use nano:
+
 sudo nano /etc/ansible/hosts
+Add the IP address or hostname of the remote server to the inventory file. In this example, we'll add a server with the IP address 192.168.0.101 to a group called servers:
+
+[servers]
+server1 ansible_host=192.168.0.101
+You can add additional servers and groups as needed.
+
+Save the file and exit the text editor.
+Testing Ansible
+After installing Ansible and setting up the inventory file, you can test Ansible by running the following commands:
+
+List the hosts and groups in the inventory file by running the following command:
+
+ansible-inventory --list -y
+Ping all the hosts in the inventory file by running the following command:
+
+ansible all -m ping
+If Ansible can successfully connect to the remote server and ping it, you should see a success message.
 
