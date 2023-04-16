@@ -1,0 +1,36 @@
+SSH (Secure Shell) is a protocol used for secure remote login and file transfer. In this guide, we'll cover the steps required to install and configure SSH on Ubuntu.
+
+Installing SSH
+To install SSH on Ubuntu, you can use the following command:
+
+
+sudo apt install openssh-server
+Configuring SSH
+After installing SSH, you can configure it to allow root login. Follow these steps to configure SSH:
+
+Open the SSH configuration file in a text editor. In this example, we'll use nano:
+
+cd /etc/ssh
+sudo nano sshd_config
+Find the line that reads #PermitRootLogin prohibit-password. Uncomment the line and change the value to yes:
+
+#PermitRootLogin prohibit-password
+PermitRootLogin yes
+Save the file and exit the text editor.
+
+Set a password for the root user account by running the following command:
+
+sudo passwd root
+You will be prompted to enter and confirm the new password.
+
+Generate an SSH key pair by running the following command:
+
+ssh-keygen
+You can accept the default options by pressing ENTER for each prompt, or you can customize the options if desired.
+
+Copy the public key to the remote server by running the following command:
+
+ssh-copy-id <remote-server>
+Replace <remote-server> with the IP address or hostname of the remote server.
+
+You will be prompted to enter the password for the root user account on the remote server. After entering the password, the public key will be copied to the remote server.
